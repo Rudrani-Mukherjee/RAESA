@@ -1,0 +1,81 @@
+{
+  "siteName": "RAESA 2027",
+  "fullName": "International Conference on Recent Advances in Engineering Sciences and Applications",
+  "tagline": "Mathematics · Physics · Engineering · Chemistry · Data & AI",
+  "venueShort": "Dr. B. C. Roy Engineering College, Durgapur, India",
+  "conferenceDates": "25–26 March 2027",
+  "email": "raesa2027@bcrec.ac.in",
+  "phone": "+91-90000-00000",
+  "cmtLink": "https://cmt3.research.microsoft.com/RAESA2027",
+  "heroSummary": "A two-day academic gathering that connects students, faculty, and industry professionals through research, innovation, and meaningful networking.",
+
+  "nav": [
+    { "label": "Home", "href": "index.html" },
+    { "label": "Call for Papers", "href": "cfp.html" },
+    {
+      "label": "Committee",
+      "children": [
+        { "label": "Organizing Committee", "href": "committee/organizing.html" },
+        { "label": "Advisory Committee", "href": "committee/advisory.html" },
+        { "label": "Technical Program Committee", "href": "committee/technical.html" }
+      ]
+    },
+    { "label": "Speakers", "href": "speakers.html" },
+    { "label": "Submission", "href": "submission.html" },
+    { "label": "Registration", "href": "registration.html" },
+    { "label": "Venue", "href": "venue.html" },
+    { "label": "Program Schedule", "href": "program.html" },
+    {
+      "label": "Past Conf. of BCREC",
+      "children": [
+        { "label": "NCCCS 2012", "href": "past-conferences/ncccs-2012.html" },
+        { "label": "NCETSTEA 2020", "href": "past-conferences/ncetstea-2020.html" },
+        { "label": "MESIICON 2022", "href": "past-conferences/mesiicon-2022.html" },
+        { "label": "CIACON 2025", "href": "past-conferences/ciacon-2025/index.html" }
+      ]
+    },
+    { "label": "Contact", "href": "contact.html" }
+  ],
+
+  "importantDates": [
+    { "label": "Call for Papers opens", "date": "2026-10-01", "done": false },
+    { "label": "Full paper submission deadline", "date": "2027-01-15", "done": false },
+    { "label": "Notification of acceptance", "date": "2027-02-05", "done": false },
+    { "label": "Camera-ready & registration deadline", "date": "2027-02-20", "done": false },
+    { "label": "Conference dates", "date": "2027-03-25", "done": false }
+  ],
+
+  "highlights": [
+    { "value": "5", "label": "Disciplines", "caption": "Across engineering, sciences, and emerging technologies." },
+    { "value": "2", "label": "Days", "caption": "Of talks, panels, networking, and live discussion." },
+    { "value": "200+", "label": "Expected submissions", "caption": "A strong academic audience from multiple institutions." }
+  ],
+
+  "conferenceTracks": [
+    { "title": "Peer-reviewed tracks", "text": "Double-blind review, proceedings support, and clear submission guidance for all accepted papers." },
+    { "title": "Keynotes & panels", "text": "Invited speakers from academia and industry share practical insight and future-focused ideas." },
+    { "title": "Best paper recognition", "text": "Outstanding contributions are celebrated with track-wise awards and visibility." }
+  ],
+
+  "footerQuickLinks": ["cfp.html", "committee/technical.html", "submission.html", "registration.html", "venue.html"],
+
+  "socials": [
+    { "label": "LinkedIn", "href": "#" },
+    { "label": "X / Twitter", "href": "#" },
+    { "label": "YouTube", "href": "#" }
+  ]
+  ,
+  "partnerLogos": [
+    "assets/images/logo/college-logo.png",
+    null,
+    null,
+    null,
+    null
+  ],
+  "heroSlides": [
+    "assets/images/venue/bcrec.jpg",
+    "assets/images/venue/bcrec-1.jpg",
+    "assets/images/venue/bcrec-2.jpg",
+    "assets/images/venue/bcrec-3.jpg"
+  ]
+}
