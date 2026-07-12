@@ -1,52 +1,52 @@
-# RAESA 2027 — Conference Website Starter
+# RAESA 2027 — Conference Website
 
 ## Full folder structure
 
 ```
-riyasa-website/
-├── index.html                      ← Home            (Rudrani — build)
-├── cfp.html                        ← Call for Papers  (placeholder)
-├── speakers.html                   ← Speakers         (placeholder)
-├── submission.html                 ← Submission       (placeholder)
-├── registration.html               ← Registration     (placeholder — has fee table)
-├── venue.html                      ← Venue            (placeholder)
-├── program.html                    ← Program Schedule (placeholder)
-├── contact.html                    ← Contact          (placeholder)
+raesa-conf/
+├── index.html                      ← Home
+├── speakers.html                   ← Speakers
+├── submission.html                 ← Submission
+├── cfp.html                        ← Call for Papers
+├── registration.html               ← Registration
+├── venue.html                      ← Venue
+├── program.html                    ← Program Schedule
+├── contact.html                    ← Contact
 │
 ├── committee/
-│   ├── organizing.html             (placeholder)
-│   ├── advisory.html               (placeholder)
-│   └── technical.html              (placeholder)
+│   ├── organizing.html
+│   ├── advisory.html
+│   └── technical.html
 │
 ├── past-conferences/
-│   ├── ncccs-2012.html             (placeholder)
-│   ├── ncetstea-2020.html          (placeholder)
-│   ├── mesiicon-2022.html          (placeholder)
+│   ├── ncccs-2012.html
+│   ├── ncetstea-2020.html
+│   ├── mesiicon-2022.html
 │   └── ciacon-2025/
-│       └── index.html              (placeholder — archived mini-site)
+│       └── index.html
 │
 ├── assets/
-│   ├── css/style.css               ← SHARED — Rudrani owns, PR required to touch
-│   ├── js/main.js                  ← SHARED — Rudrani owns, PR required to touch
-│   ├── data/site-config.json       ← SHARED — Rudrani owns, PR required to touch
-│   ├── images/{logo,sponsors,speakers,committee,venue}/  ← empty, drop real images here
-│   └── docs/                       ← empty, drop PDFs here (brochure, CFP flyer, schedule)
+│   ├── css/style.css               ← SHARED — edit via Pull Request only, do not edit directly
+│   ├── js/main.js                  ← SHARED — edit via Pull Request only, do not edit directly
+│   ├── data/site-config.json       ← SHARED — edit via Pull Request only, do not edit directly
+│   ├── images/{logo,sponsors,speakers,committee,venue}/  ← drop real images here
+│   └── docs/                       ← drop PDFs here (brochure, CFP flyer, schedule)
 │
 └── README.md
 ```
 
 ## Which files are blank vs which to build
 
-**Blank placeholders (teammates fill in):** everything under `committee/`,
+**Placeholders (page owners fill in):** everything under `committee/`,
 `past-conferences/`, and the 7 top-level pages other than `index.html`.
 Each one already has the correct `<head>`, header/footer mounts, and a
-`<main id="page-content">` wrapper with a `TODO` note — the person owning
-that page only edits inside `<main id="page-content">…</main>`.
+`<main id="page-content">` wrapper — the person owning that page only edits
+inside `<main id="page-content">…</main>`.
 
-**Rudrani builds:** `index.html` (real content, not a placeholder) plus the
-three shared/locked files — `style.css`, `main.js`, `site-config.json`.
-Nobody else should edit those three without a PR + your review, since they
-affect every page at once.
+**Home page:** `index.html` gets real content directly (not a placeholder).
+The three shared/locked files below are edited via PR only, regardless of
+who's making the change — they affect every page at once, so any update to
+them goes through review first.
 
 ## Depth-aware paths — important
 
@@ -57,16 +57,16 @@ header/footer/config still load:
 1. `<body data-depth="1">` for one level deep (e.g. `committee/organizing.html`),
    `data-depth="2"` for two levels deep (e.g. `past-conferences/ciacon-2025/index.html`).
 2. CSS/JS `<link>`/`<script>` tags prefixed with the matching number of `../`
-   (already done in the placeholders — don't remove it).
+   (already done in every placeholder — don't remove it).
 
 Any image or PDF a contributor adds inside a subfolder page needs the same
 `../` prefix, e.g. from `committee/organizing.html`:
 `<img src="../assets/images/committee/chair.jpg">`.
 
+## How the shared header/footer/nav work
 
-
-Instead of hard-coding the navbar, footer, dates, email, and CMT link into every
-one of the 45 pages, all of that lives in **one file**:
+Instead of hard-coding the navbar, footer, dates, email, and CMT link into
+every page, all of that lives in one file:
 
     assets/data/site-config.json
 
@@ -78,13 +78,13 @@ Every page just contains two empty mount points:
 <div id="site-footer"></div>
 ```
 
-`assets/js/main.js` reads `site-config.json` on load and builds the header, nav
-(including the "Committee" dropdown), footer, and any `[data-widget]` /
-`[data-field]` elements on the page automatically.
+`assets/js/main.js` reads `site-config.json` on load and builds the header,
+nav (including the "Committee" and "Past Conf." dropdowns), footer, and any
+`[data-widget]` / `[data-field]` elements on the page automatically.
 
 **Practical effect:** when the conference dates change, a new deadline is
-added, the email changes, or a nav link is renamed — you edit `site-config.json`
-once, and all 45 pages update instantly. You never touch page HTML for that.
+added, the email changes, or a nav link is renamed — edit `site-config.json`
+once, and every page updates instantly. Page HTML never needs to change for that.
 
 ## Dynamic widgets available on any page
 
@@ -93,21 +93,23 @@ once, and all 45 pages update instantly. You never touch page HTML for that.
 - `<span data-field="email"></span>`, `data-field="phone"`, `data-field="siteName"`,
   `data-field="fullName"`, `data-field="venueShort"` — pull single values straight from config.
 
-## Adding a new page (of the ~45)
+## Adding a new page
 
-1. Copy any existing page (e.g. `cfp.html`) as a starting point.
-2. Keep the `<div id="site-header"></div>` / `<div id="site-footer"></div>` mounts and the two `<script>`/`<link>` tags in `<head>`/before `</body>` — don't rebuild them by hand.
-3. Add the new page's filename to the `nav` array (or a committee-style `children` array) in `site-config.json`. It appears in the menu on every page immediately.
-4. Write the page's unique content in the middle.
+1. Copy the closest existing page as a starting point (e.g. `cfp.html`, or one
+   of the `committee/*.html` files if it's a committee-style page).
+2. Keep the `<div id="site-header"></div>` / `<div id="site-footer"></div>`
+   mounts and the `<link>`/`<script>` tags in `<head>`/before `</body>` — don't
+   rebuild them by hand.
+3. Add the new page's filename to the `nav` array (or a `children` array) in
+   `site-config.json`. It appears in the menu on every page immediately.
+4. Write the page's unique content inside `<main id="page-content">`.
 
-For deeply-nested pages (e.g. `/proceedings/2026/track-1.html`), set
-`data-depth="2"` on `<body>` so the config path resolves correctly (see comment in `main.js`).
+## Committee & past-conference sub-pages
 
-## Committee sub-pages
-
-`committee-organizing.html`, `committee-advisory.html`, and `committee-tpc.html`
-are identical in structure — only the people/roles differ. Duplicate one of
-these three when adding another committee-style page rather than starting from scratch.
+`committee/organizing.html`, `committee/advisory.html`, and
+`committee/technical.html` are identical in structure — only the people/roles
+differ. Same for the four `past-conferences/*.html` files. Duplicate the
+closest one when adding another page like these rather than starting from scratch.
 
 ## Running locally
 
@@ -121,8 +123,7 @@ python3 -m http.server 8080
 npx serve .
 ```
 
-Then open `http://localhost:8080`. On your actual hosting (pcrace or
-otherwise) this works automatically since it's a real web server.
+Then open `http://localhost:8080`.
 
 ## Design tokens (for anyone extending the CSS)
 
@@ -132,11 +133,11 @@ otherwise) this works automatically since it's a real web server.
   element — reuse it for any page with a real timeline; don't add numbered
   markers elsewhere just for decoration.
 
-## Suggested build order for the remaining pages
+## Git workflow
 
-1. Finish the 9 structural pages already scaffolded here.
-2. Add per-track "Call for Papers" detail pages (if each track needs its own page).
-3. Add individual author/paper-listing pages if proceedings will be listed page-by-page.
-4. Add a photo-gallery / past-conference archive section once you have real photos.
-5. Swap placeholder avatars, sponsor logos, and map embed for real assets last —
-   structure first, content polish last.
+- Clone the repo, then branch per assigned page(s): `git checkout -b page/committee`.
+- Only edit inside `<main id="page-content">` in your assigned files.
+- Pull `main` before starting each session: `git pull origin main`.
+- Push your branch and open a PR into `main` when a page is ready.
+- `style.css`, `main.js`, and `site-config.json` always go through a PR —
+  raise what you need changed there and it'll get reviewed and merged in.
