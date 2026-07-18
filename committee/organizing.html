@@ -8,39 +8,37 @@
 <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets/css/style.css">
 <style>
-  /* RAESA logo palette + static HTML/CSS header, nav, footer — scoped to this page only */
   body {
     --ink: #1b2f6b;
     --ink-2: #24418f;
     --gold: #f26f21;
     --teal: #2e8b85;
-    font-size: 1.05rem;
+    font-size: 1.12rem;
   }
   .container { max-width: 100%; padding: 0 40px; }
   main { overflow-x: clip; }
 
-  /* Top banner — logos at the far corners, title centered */
   .top-banner {
     display: flex; align-items: center; justify-content: space-between;
-    gap: 24px; padding: 18px 24px; background: #fff;
+    gap: 12px; padding: 10px 18px; background: #fff;
   }
-  .banner-logo { height: 220px; width: 320px; object-fit: contain; flex: none; }
+  .banner-logo { height: 200px; width: auto; object-fit: contain; flex: none; }
   .banner-logo.raesa { height: 200px; width: 200px; border-radius: 50%; object-fit: cover; border: 3px solid var(--gold); }
   .banner-title { text-align: center; flex: 1; min-width: 0; }
   .banner-name {
     font-family: var(--font-display); font-weight: 700; line-height: 1.1;
-    font-size: clamp(2.2rem, 4.5vw, 3.4rem); color: var(--ink); margin: 0;
+    font-size: clamp(2.4rem, 5vw, 3.8rem); color: var(--ink); margin: 0;
   }
   .banner-name span { color: var(--gold); }
-  .banner-title p { margin: 6px 0 0; color: var(--muted); font-weight: 600; font-size: 1.05rem; }
-  .banner-title .banner-dates { color: var(--ink-2); font-family: var(--font-mono); font-size: 1rem; }
+  .banner-title p { margin: 6px 0 0; color: var(--muted); font-weight: 600; font-size: 1.15rem; }
+  .banner-title .banner-dates { color: var(--ink-2); font-family: var(--font-mono); font-size: 1.05rem; }
 
   /* Full-width navy nav bar */
   .main-nav { background: var(--ink); }
   .main-nav > ul { list-style: none; margin: 0; padding: 0 12px; display: flex; flex-wrap: wrap; }
   .main-nav a {
-    display: block; padding: 20px 22px; color: #fff; font-weight: 700;
-    font-size: 1rem; text-transform: uppercase; letter-spacing: 0.03em;
+    display: block; padding: 16px 20px; color: #fff; font-weight: 700;
+    font-size: 1.08rem; text-transform: uppercase; letter-spacing: 0.03em;
   }
   .main-nav a:hover { background: var(--ink-2); color: #fff; }
   .main-nav > ul > li > a.current { background: var(--gold); color: #fff; }
@@ -60,7 +58,8 @@
   .page-footer a { color: #f4a866; }
 
   /* Committee layout */
-  .page-title-bar h1 { font-size: clamp(2.2rem, 4vw, 3.2rem); }
+  .page-title-bar h1 { font-size: clamp(2.4rem, 4.5vw, 3.5rem); }
+  h2 { font-size: clamp(1.7rem, 3vw, 2.4rem); }
   .committee-group { margin-bottom: 40px; }
   .committee-group .group-head { margin-bottom: 20px; }
   .committee-group .group-head h2 { margin-bottom: 0.2em; }
