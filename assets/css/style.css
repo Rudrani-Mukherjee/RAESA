@@ -290,7 +290,7 @@ p { margin: 0 0 1em; color: var(--text); word-wrap: break-word; }
 .section-head .eyebrow { color: var(--teal); }
 
 /* Center primary section headings on the homepage for a balanced look */
-.section-head { text-align: center; margin-left: auto; margin-right: auto; }
+.section-head {max-width: 100% !important;margin-left: 0 !important;margin-right: 0 !important;text-align: justify !important;}
 .highlight-card, .section-head h2 { text-align: center; }
 
 .grid { display: grid; gap: 16px; width: 100%; }
