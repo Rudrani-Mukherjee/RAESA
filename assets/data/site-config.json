@@ -29,10 +29,10 @@
     {
       "label": "Past Conf. of BCREC",
       "children": [
-        { "label": "NCCCS 2012", "href": "past-conferences/ncccs-2012.html" },
-        { "label": "NCETSTEA 2020", "href": "past-conferences/ncetstea-2020.html" },
-        { "label": "MESIICON 2022", "href": "past-conferences/mesiicon-2022.html" },
-        { "label": "CIACON 2025", "href": "past-conferences/ciacon-2025/index.html" }
+        { "label": "NCCCS 2012", "href": "https://ieeexplore.ieee.org/xpl/conhome/6401248/proceeding", "external": true },
+        { "label": "NCETSTEA 2020", "href": "https://ieeexplore.ieee.org/xpl/conhome/9118611/proceeding", "external": true },
+        { "label": "MESIICON 2022", "href": "https://ieeexplore.ieee.org/xpl/conhome/10093230/proceeding", "external": true },
+        { "label": "CIACON 2025", "href": "https://ieeexplore.ieee.org/xpl/conhome/11189301/proceeding", "external": true }
       ]
     },
     { "label": "Contact", "href": "contact.html" }
@@ -41,9 +41,10 @@
   "importantDates": [
     { "label": "Call for Papers opens", "date": "2026-10-01", "done": false },
     { "label": "Full paper submission deadline", "date": "2027-01-15", "done": false },
-    { "label": "Notification of acceptance", "date": "2027-02-05", "done": false },
-    { "label": "Camera-ready & registration deadline", "date": "2027-02-20", "done": false },
-    { "label": "Conference dates", "date": "2027-03-25", "done": false }
+    { "label": "Notification of acceptance", "date": "2027-02-10", "done": false },
+    { "label": "Registration deadline", "date": "2027-02-25", "done": false },
+    { "label": "Camera-ready submission", "date": null, "done": false },
+    { "label": "Conference dates", "date": "2027-03-25", "endDate": "2027-03-26", "done": false }
   ],
 
   "highlights": [

@@ -15,6 +15,19 @@
     return d.toLocaleDateString("en-GB", { day: "2-digit", month: "short", year: "numeric" });
   }
 
+  function formatDateEntry(d) {
+    if (!d.endDate) return fmtDate(d.date);
+    const start = new Date(d.date + "T00:00:00");
+    const end = new Date(d.endDate + "T00:00:00");
+    const sameMonth = start.getMonth() === end.getMonth() && start.getFullYear() === end.getFullYear();
+    const startDay = start.toLocaleDateString("en-GB", { day: "2-digit" });
+    if (sameMonth) {
+      const endFormatted = end.toLocaleDateString("en-GB", { day: "2-digit", month: "short", year: "numeric" });
+      return `${startDay}–${endFormatted}`;
+    }
+    return `${fmtDate(d.date)} – ${fmtDate(d.endDate)}`;
+  }
+
   function currentFile() {
     const parts = window.location.pathname.split("/");
     return parts[parts.length - 1] || "index.html";
@@ -41,11 +54,11 @@
             <button class="nav-link nav-toggle" aria-expanded="false">${item.label}<span class="caret" aria-hidden="true"></span></button>
             <ul class="dropdown">
               ${item.children
-                .map(
-                  (c) =>
-                    `<li><a href="${ROOT}${c.href}"${basename(c.href) === here ? ' class="active"' : ""}>${c.label}</a></li>`
-                )
-                .join("")}
+              .map(
+                (c) =>
+                  `<li><a href="${c.external ? c.href : ROOT + c.href}"${c.external ? ' target="_blank" rel="noopener"' : ""}${c.href === here ? ' class="active"' : ""}>${c.label}</a></li>`
+              )
+              .join("")}
             </ul>
           </li>`;
         }
@@ -228,7 +241,7 @@
             <li class="${d.done ? "is-done" : ""}">
               <span class="ledger-index">${String(i + 1).padStart(2, "0")}</span>
               <span class="ledger-label">${d.label}</span>
-              <span class="ledger-date">${fmtDate(d.date)}</span>
+              <span class="ledger-date${d.date ? "" : " tba"}">${d.date ? formatDateEntry(d) : "To be announced"}</span>
             </li>`
             )
             .join("")}
