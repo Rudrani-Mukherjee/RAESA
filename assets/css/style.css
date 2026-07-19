@@ -584,3 +584,59 @@ table.data-table { width: 100%; border-collapse: collapse; background: var(--pap
 .track-table tr:nth-child(even){
     background:#f7f7f7;
 }
+
+/* Speakers Page */
+
+.speaker-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+gap:30px;
+margin-top:30px;
+}
+
+.speaker-card{
+background:#fff;
+padding:30px;
+border-radius:12px;
+box-shadow:0 5px 18px rgba(0,0,0,.08);
+text-align:center;
+transition:.3s;
+}
+
+.speaker-card:hover{
+transform:translateY(-6px);
+}
+
+.speaker-card img{
+width:150px;
+height:150px;
+border-radius:50%;
+object-fit:cover;
+margin-bottom:20px;
+border:4px solid #f1b434;
+}
+
+.designation{
+font-weight:600;
+color:#555;
+margin:15px 0;
+}
+
+.cta-card{
+background:#eef6ff;
+padding:50px;
+border-radius:15px;
+text-align:center;
+}
+
+.cta-card h2{
+margin-bottom:15px;
+}
+
+.cta-card p{
+margin-bottom:25px;
+}
+
+.alt-bg{
+background:#f8fbff;
+}
