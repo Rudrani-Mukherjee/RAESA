@@ -8,124 +8,24 @@
 <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/style.css">
 <style>
-  body {
-    --ink: #1b2f6b;
-    --ink-2: #24418f;
-    --gold: #f26f21;
-    --teal: #2e8b85;
-    font-size: 1.12rem;
-  }
-  .container { max-width: 100%; padding: 0 40px; }
-  main { overflow-x: clip; }
-
-  .top-banner {
-    display: flex; align-items: center; justify-content: space-between;
-    gap: 12px; padding: 10px 18px; background: #fff;
-  }
-  .banner-logo { height: 200px; width: auto; object-fit: contain; flex: none; }
-  .banner-logo.raesa { height: 200px; width: 200px; border-radius: 50%; object-fit: cover; border: 3px solid var(--gold); }
-  .banner-title { text-align: center; flex: 1; min-width: 0; }
-  .banner-name {
-    font-family: var(--font-display); font-weight: 700; line-height: 1.1;
-    font-size: clamp(2.4rem, 5vw, 3.8rem); color: var(--ink); margin: 0;
-  }
-  .banner-name span { color: var(--gold); }
-  .banner-title p { margin: 6px 0 0; color: var(--muted); font-weight: 600; font-size: 1.15rem; }
-  .banner-title .banner-dates { color: var(--ink-2); font-family: var(--font-mono); font-size: 1.05rem; }
-
-  .main-nav { background: var(--ink); }
-  .main-nav > ul { list-style: none; margin: 0; padding: 0 12px; display: flex; flex-wrap: wrap; }
-  .main-nav a {
-    display: block; padding: 16px 20px; color: #fff; font-weight: 700;
-    font-size: 1.08rem; text-transform: uppercase; letter-spacing: 0.03em;
-  }
-  .main-nav a:hover { background: var(--ink-2); color: #fff; }
-  .main-nav > ul > li > a.current { background: var(--gold); color: #fff; }
-  .nav-drop { position: relative; }
-  .nav-drop .sub-menu {
-    list-style: none; margin: 0; padding: 0; position: absolute; top: 100%; left: 0;
-    background: #fff; min-width: 300px; box-shadow: 0 14px 28px rgba(11,37,69,0.18);
-    display: none; z-index: 60;
-  }
-  .nav-drop:hover .sub-menu, .nav-drop:focus-within .sub-menu { display: block; }
-  .nav-drop .sub-menu a { color: var(--ink); text-transform: none; font-weight: 600; padding: 13px 18px; border-bottom: 1px solid var(--line); }
-  .nav-drop .sub-menu a:hover { background: var(--bg); color: var(--ink); }
-
-  /* Static footer */
-  .page-footer { background: var(--ink); color: #e7f0ff; text-align: center; padding: 34px 20px; margin-top: 48px; }
-  .page-footer p { margin: 5px 0; color: #e7f0ff; }
-  .page-footer a { color: #f4a866; }
-
-  /* Program schedule */
-  .page-title-bar h1 { font-size: clamp(2.4rem, 4.5vw, 3.5rem); }
-  h2 { font-size: clamp(2.0rem, 3vw, 2.4rem); }
+  /* Program schedule page extras */
   .day-head { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; margin: 0 0 14px; }
-  .day-head .day-date { font-family: var(--font-mono); color: var(--muted); font-size: 1rem; }
-  .table-wrap {
-    width: 100%; overflow-x: auto; border: 1px solid var(--line); border-radius: var(--radius);
-    background: var(--paper); box-shadow: 0 10px 24px rgba(11,37,69,0.05);
-  }
-  .data-table { width: 100%; border-collapse: collapse; min-width: 560px; }
-  .data-table th {
-    background: var(--ink); color: #fff; text-align: left; font-size: 1.25rem;
-    text-transform: uppercase; letter-spacing: 0.05em; padding: 14px 18px;
-  }
-  .data-table td { padding: 16px 18px; border-top: 1px solid var(--line); vertical-align: top; font-size: 1.02rem; }
-  .data-table tbody tr:hover { background: var(--bg); }
-  .data-table .time-cell { font-family: var(--font-mono); font-size: 1.25rem; font-weight: 600; color: var(--ink-2); white-space: nowrap; }
-  .data-table .session-title { font-weight: 700; color: var(--ink); display: block; margin-bottom: 2px; font-size: 1.35rem; }
+  .day-head .day-date { font-family: var(--font-mono); color: var(--muted); }
+  .data-table td { vertical-align: top; }
+  .data-table .time-cell { font-family: var(--font-mono); font-weight: 600; color: var(--ink-2); white-space: nowrap; }
+  .data-table .session-title { font-weight: 700; color: var(--ink); display: block; margin-bottom: 2px; }
   .data-table ul { margin: 6px 0 0; padding-left: 18px; color: var(--muted); }
   .data-table ul li { margin: 2px 0; }
-  .data-table tr.is-break td { background: #fdf1e5; color: var(--muted); font-weight: 600; }
-  .data-table tr.is-break:hover td { background: #fbe7d2; }
+  .data-table tr.is-break td { background: #fbf6e7; color: var(--muted); font-weight: 600; }
   .track-pill {
-    display: inline-block; font-size: 1.30rem; font-weight: 600; color: var(--ink-2);
+    display: inline-block; font-size: 0.92rem; font-weight: 600; color: var(--ink-2);
     background: var(--bg); border: 1px solid var(--line); border-radius: 999px;
     padding: 4px 12px; margin: 4px 8px 0 0;
   }
-
-  @media (max-width: 900px) {
-    .container { padding: 0 20px; }
-    .top-banner { flex-direction: column; gap: 14px; }
-    .banner-logo { height: 92px; }
-    .banner-logo.raesa { height: 104px; width: 104px; }
-    .main-nav > ul { justify-content: center; }
-    .main-nav a { padding: 13px 14px; font-size: 0.88rem; }
-    .nav-drop .sub-menu { position: static; box-shadow: none; min-width: 0; }
-  }
 </style>
 </head>
-<body>
-
-<header class="top-banner">
-  <img class="banner-logo" src="assets/images/logo/bc%20roy%20logo.jpg" alt="Dr. B. C. Roy Engineering College, Durgapur — An Autonomous Institute">
-  <div class="banner-title">
-    <div class="banner-name">RAESA <span>2027</span></div>
-    <p>International Conference on Recent Advances in Engineering Sciences and Applications</p>
-    <p class="banner-dates">25–26 March 2027 · Dr. B. C. Roy Engineering College, Durgapur, India</p>
-  </div>
-  <img class="banner-logo raesa" src="assets/images/logo/raesa-logo.jpeg" alt="RAESA 2027">
-</header>
-
-<nav class="main-nav">
-  <ul>
-    <li><a href="index.html">Home</a></li>
-    <li><a href="cfp.html">Call for Papers</a></li>
-    <li class="nav-drop"><a href="committee/organizing.html">Committee ▾</a>
-      <ul class="sub-menu">
-        <li><a href="committee/organizing.html">Organizing Committee</a></li>
-        <li><a href="committee/advisory.html">Advisory Committee</a></li>
-        <li><a href="committee/technical.html">Technical Program Committee</a></li>
-      </ul>
-    </li>
-    <li><a href="speakers.html">Speakers</a></li>
-    <li><a href="submission.html">Submission</a></li>
-    <li><a href="registration.html">Registration</a></li>
-    <li><a href="venue.html">Venue</a></li>
-    <li><a class="current" href="program.html">Program Schedule</a></li>
-    <li><a href="contact.html">Contact</a></li>
-  </ul>
-</nav>
+<body data-depth="0">
+<div id="site-header"></div>
 
 <main id="page-content">
 
@@ -308,12 +208,7 @@
 
 </main>
 
-<footer class="page-footer">
-  <p><strong>RAESA 2027</strong> · International Conference on Recent Advances in Engineering Sciences and Applications</p>
-  <p>Organized by the Department of Basic Science and Humanities, Dr. B. C. Roy Engineering College, Durgapur, India</p>
-  <p>25–26 March 2027 · Email: <a href="mailto:raesa2027@bcrec.ac.in">raesa2027@bcrec.ac.in</a></p>
-  <p>&copy; 2027 RAESA. All rights reserved.</p>
-</footer>
-
+<div id="site-footer"></div>
+<script src="assets/js/main.js" defer></script>
 </body>
 </html>
