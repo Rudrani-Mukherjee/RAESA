@@ -58,29 +58,33 @@
     const mount = document.getElementById("site-header");
     if (!mount) return;
     mount.innerHTML = `
-      <div class="topbar">
-        <div class="container topbar-inner">
-          <span>${cfg.fullName}</span>
-          <span>${cfg.conferenceDates} &middot; ${cfg.venueShort}</span>
-        </div>
+    <header class="site-header">
+      <div class="container header-inner">
+        <img class="header-logo header-logo-left" src="${ROOT}${cfg.bcrecLogo}" alt="Dr. B. C. Roy Engineering College, Durgapur">
+        <a class="brand" href="${ROOT}index.html">
+          <span class="brand-text">
+            <strong><span class="brand-name">RAESA</span> <span class="brand-year">2027</span></strong>
+            <small>${cfg.tagline}</small>
+          </span>
+        </a>
+        <img class="header-logo header-logo-right" src="${ROOT}assets/images/logo/raesa-logo.jpeg" alt="${cfg.siteName} logo">
+        <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
       </div>
-      <header class="site-header">
-        <div class="container header-inner">
-          <a class="brand" href="${ROOT}index.html">
-            <img class="brand-mark" src="${ROOT}assets/images/logo/raesa-logo.jpeg" alt="${cfg.siteName} logo">
-            <span class="brand-text">
-              <strong>${cfg.siteName}</strong>
-              <small>${cfg.tagline}</small>
-            </span>
-          </a>
-          <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false">
-            <span></span><span></span><span></span>
-          </button>
+      <div class="nav-strip">
+        <div class="container">
           <nav class="site-nav">
             <ul>${buildNav(cfg.nav)}</ul>
           </nav>
         </div>
-      </header>`;
+      </div>
+      <div class="topbar">
+        <div class="topbar-marquee">
+          <span class="topbar-track">${cfg.fullName} &nbsp;&nbsp;•&nbsp;&nbsp; ${cfg.conferenceDates} &middot; ${cfg.venueShort} &nbsp;&nbsp;•&nbsp;&nbsp; ${cfg.fullName} &nbsp;&nbsp;•&nbsp;&nbsp; ${cfg.conferenceDates} &middot; ${cfg.venueShort}</span>
+        </div>
+      </div>
+    </header>`;
 
     wireHeaderInteractions();
   }
@@ -102,7 +106,7 @@
         return;
       }
       el.innerHTML = `
-        <div class="slides-container">${slides.map((s, i) => `<div class="slide" data-index="${i}">${s ? `<img src="${resolveAssetUrl(s)}" alt="slide-${i+1}">` : `<div class="placeholder">Image ${i + 1}</div>`}</div>`).join('')}</div>
+        <div class="slides-container">${slides.map((s, i) => `<div class="slide${i === 0 ? ' active' : ''}" data-index="${i}">${s ? `<img src="${resolveAssetUrl(s)}" alt="slide-${i+1}">` : `<div class="placeholder">Image ${i + 1}</div>`}</div>`).join('')}</div>
         
         <button class="arrow arrow-left" aria-label="Previous slide">❮</button>
         <button class="arrow arrow-right" aria-label="Next slide">❯</button>
@@ -116,8 +120,8 @@
       let autoPlayTimer = null;
 
       function show(i) {
-        idx = i % Math.max(1, slides.length);
-        container.style.transform = `translateX(-${idx * 100}%)`;
+        idx = ((i % slides.length) + slides.length) % slides.length;
+        el.querySelectorAll('.slide').forEach((s, j) => s.classList.toggle('active', j === idx));
         dots.forEach((d, j) => d.classList.toggle('active', j === idx));
       }
 

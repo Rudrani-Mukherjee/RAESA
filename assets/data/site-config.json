@@ -1,7 +1,8 @@
 {
   "siteName": "RAESA 2027",
+  "bcrecLogo": "assets/images/logo/bc roy logo.jpg",
   "fullName": "International Conference on Recent Advances in Engineering Sciences and Applications",
-  "tagline": "Mathematics · Physics · Engineering · Chemistry · Data & AI",
+  "tagline": "Fostering interdisciplinary research across engineering, science, and humanities",
   "venueShort": "Dr. B. C. Roy Engineering College, Durgapur, India",
   "conferenceDates": "25–26 March 2027",
   "email": "raesa2027@bcrec.ac.in",
@@ -48,7 +49,7 @@
   "highlights": [
     { "value": "5", "label": "Disciplines", "caption": "Across engineering, sciences, and emerging technologies." },
     { "value": "2", "label": "Days", "caption": "Of talks, panels, networking, and live discussion." },
-    { "value": "200+", "label": "Expected submissions", "caption": "A strong academic audience from multiple institutions." }
+    { "value": "Open", "label": "Call for Papers", "caption": "Submissions open October 2026 — track details coming soon." }
   ],
 
   "conferenceTracks": [
