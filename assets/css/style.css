@@ -487,3 +487,77 @@ table.data-table { width: 100%; border-collapse: collapse; background: var(--pap
   * { transition: none !important; scroll-behavior: auto !important; }
   .hero-orb, .topbar-track { animation: none; }
 }
+
+/* ============================================================
+   Committee & program schedule components
+   (shared styling for committee/*.html and program.html)
+   ============================================================ */
+.committee-group { margin-bottom: 40px; }
+.committee-group .group-head { margin-bottom: 20px; }
+.committee-group .group-head h2 { margin-bottom: 0.2em; }
+.committee-group .group-head p { color: var(--muted); max-width: 72ch; }
+.role-tag {
+  display: inline-block; font-family: var(--font-mono); font-size: 0.8rem; font-weight: 600;
+  letter-spacing: 0.06em; text-transform: uppercase; color: var(--teal);
+  background: rgba(20,108,107,0.08); border: 1px solid rgba(20,108,107,0.25);
+  border-radius: 999px; padding: 3px 12px; margin-bottom: 8px;
+}
+.person-card.lead { border-top: 3px solid var(--gold); }
+.person-avatar span {
+  display: flex; width: 100%; height: 100%; align-items: center; justify-content: center;
+  font-family: var(--font-display); font-weight: 700; color: var(--ink-2);
+}
+
+.day-head { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; margin: 0 0 14px; }
+.day-head .day-date { font-family: var(--font-mono); color: var(--muted); }
+.data-table td { vertical-align: top; }
+.data-table .time-cell { font-family: var(--font-mono); font-weight: 600; color: var(--ink-2); white-space: nowrap; }
+.data-table .session-title { font-weight: 700; color: var(--ink); display: block; margin-bottom: 2px; }
+.data-table ul { margin: 6px 0 0; padding-left: 18px; color: var(--muted); }
+.data-table ul li { margin: 2px 0; }
+.data-table tr.is-break td { background: #fbf6e7; color: var(--muted); font-weight: 600; }
+.track-pill {
+  display: inline-block; font-size: 0.92rem; font-weight: 600; color: var(--ink-2);
+  background: var(--bg); border: 1px solid var(--line); border-radius: 999px;
+  padding: 4px 12px; margin: 4px 8px 0 0;
+}
+
+/* ============================================================
+   Nav strip spans the full screen width like the logo banner
+   ============================================================ */
+.nav-strip > .container { max-width: 100%; padding: 0 8px; }
+.site-nav > ul { justify-content: space-evenly; }
+
+/* ============================================================
+   Desktop — larger banner and type
+   ============================================================ */
+@media (min-width: 1301px) {
+  body { font-size: 1.12rem; }
+  .header-inner { padding: 24px 28px; }
+  .header-logo { height: 124px; }
+  .header-logo-right { height: 124px; width: 124px; }
+  .brand-text strong { font-size: 3.25rem; }
+  .brand-text small { font-size: 1.25rem; }
+  .nav-link { font-size: 1.05rem; padding: 12px 18px; }
+  .topbar { font-size: 0.92rem; padding: 12px 0; }
+}
+
+/* ============================================================
+   Mobile header polish — logos lowered with top padding,
+   BC Roy logo at the far left, hamburger at the far right,
+   breathing room under the brand text and the marquee
+   ============================================================ */
+@media (max-width: 1300px) {
+  .header-inner { padding-top: 28px; row-gap: 10px; }
+  .header-logo-left { margin-right: auto; }
+  /* extra auto margin pulls the RAESA seal left, closer to the screen centre */
+  .header-logo-right { margin-right: auto; }
+  .menu-toggle { position: static; order: 2; align-self: center; margin-left: auto; }
+  .brand { order: 3; padding-bottom: 12px; }
+  .topbar { margin-bottom: 12px; }
+}
+
+@media (max-width: 480px) {
+  .header-inner { padding-top: 20px; }
+  .menu-toggle { width: 38px; height: 34px; }
+}
