@@ -50,7 +50,7 @@
   "highlights": [
     { "value": "5", "label": "Disciplines", "caption": "Across engineering, sciences, and emerging technologies." },
     { "value": "2", "label": "Days", "caption": "Of talks, panels, networking, and live discussion." },
-    { "value": "Open", "label": "Call for Papers", "caption": "Submissions open October 2026 — track details coming soon." }
+    { "value": "Oct 2026", "label": "Call for Papers", "caption": "Submissions open October 2026 — track details coming soon." }
   ],
 
   "conferenceTracks": [
