@@ -569,18 +569,22 @@ table.data-table { width: 100%; border-collapse: collapse; background: var(--pap
 }
 .person-card-patron h4 { font-size: 1.5rem; margin-bottom: 8px; }
 .person-card-patron span { font-size: 1.1rem; color: var(--muted); }
-.grid-committee > .card.person-card-patron { flex: 0 0 360px; }
+/* flex-shrink:1 + max-width lets the box shrink to fit narrow screens
+   instead of overflowing, while still targeting 360px on wider ones. */
+.grid-committee > .card.person-card-patron { flex: 0 1 360px; width: 360px; max-width: 100%; }
 
 /* Fixed standard card size for the organizing-committee breakdown — every
    block (patrons, chairs, sub-committee members) stays exactly the same
    size instead of stretching to fill its row, matching the Technical
-   Program Committee block size. */
+   Program Committee block size. flex-shrink:1 + max-width keeps the box
+   from overflowing on narrow screens while still targeting a fixed width
+   on any screen wide enough to fit it. */
 .grid-committee {
   display: flex; flex-wrap: wrap; justify-content: center;
   gap: 32px;
 }
-.grid-committee > .card { flex: 0 0 280px; }
-.person-solo > .card { width: 280px; }
+.grid-committee > .card { flex: 0 1 280px; width: 280px; max-width: 100%; }
+.person-solo > .card { width: 280px; max-width: 100%; }
 
 .day-head { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; margin: 0 0 14px; }
 .day-head .day-date { font-family: var(--font-mono); color: var(--muted); }
