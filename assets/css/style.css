@@ -257,10 +257,10 @@ p { margin: 0 0 1em; color: var(--text); word-wrap: break-word; }
 .btn:hover { transform: translateY(-2px); }
 .btn-primary { background: var(--gold); color: var(--ink); box-shadow: 0 12px 24px rgba(201,162,39,0.2); }
 .btn-primary:hover { background: #f0b94a; color: var(--ink); }
-.btn-outline { border-color: rgba(255,255,255,0.4); color: #fff; }
+.btn-outline { border-color: rgba(255,255,255,0.4); color: #f8f5dd; }
 .btn-outline:hover { border-color: #fff; color: #fff; background: rgba(255,255,255,0.08); }
-.btn-outline.dark { border-color: var(--line); color: var(--ink); }
-.btn-outline.dark:hover { background: var(--bg); color: var(--ink); }
+.btn-outline.dark { border-color: var(--teal); color: var(--teal); background: rgba(38, 114, 177, 0.06); }
+.btn-outline.dark:hover { background: rgb(218, 243, 255); color: var(--teal); }
 
 .hero-panel { position: relative; z-index: 1; }
 .ledger-card {
@@ -364,6 +364,17 @@ table.data-table { width: 100%; border-collapse: collapse; background: var(--pap
 .data-table th { background: var(--ink); color: #fff; font-family: var(--font-mono); font-weight: 500; }
 .table-wrap { overflow-x: auto; border-radius: var(--radius); }
 
+/*-----------Speaker table--------------*/
+.tba-avatar {
+  width: 96px; height: 96px; border-radius: 50%;
+  border: 3px solid var(--gold); background: var(--bg);
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 16px;
+  color: var(--muted); font-family: var(--font-mono); font-size: 0.75rem;
+  text-transform: uppercase; letter-spacing: 0.04em;
+}
+
+/* ---------- Footer ---------- */
 .site-footer { background: linear-gradient(90deg,#05263f 0%, #08304a 100%); color: #e7f3ff; padding: 44px 0 0; margin-top: 40px; }
 .footer-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 28px; padding: 28px 20px; text-align: center; }
 .footer-grid > div { text-align: left; }
@@ -615,4 +626,83 @@ table.data-table { width: 100%; border-collapse: collapse; background: var(--pap
 @media (max-width: 480px) {
   .header-inner { padding-top: 20px; }
   .menu-toggle { width: 38px; height: 34px; }
+}
+
+.track-table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:15px;
+}
+
+.track-table th{
+    background:#12315c;
+    color:#fff;
+    padding:12px;
+    text-align:left;
+}
+
+.track-table td{
+    border:1px solid #ddd;
+    padding:12px;
+    vertical-align:top;
+}
+
+.track-table tr:nth-child(even){
+    background:#f7f7f7;
+}
+
+/* Speakers Page */
+
+.speaker-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+gap:30px;
+margin-top:30px;
+}
+
+.speaker-card{
+background:#fff;
+padding:30px;
+border-radius:12px;
+box-shadow:0 5px 18px rgba(0,0,0,.08);
+text-align:center;
+transition:.3s;
+}
+
+.speaker-card:hover{
+transform:translateY(-6px);
+}
+
+.speaker-card img{
+width:150px;
+height:150px;
+border-radius:50%;
+object-fit:cover;
+margin-bottom:20px;
+border:4px solid #f1b434;
+}
+
+.designation{
+font-weight:600;
+color:#555;
+margin:15px 0;
+}
+
+.cta-card{
+background:#eef6ff;
+padding:50px;
+border-radius:15px;
+text-align:center;
+}
+
+.cta-card h2{
+margin-bottom:15px;
+}
+
+.cta-card p{
+margin-bottom:25px;
+}
+
+.alt-bg{
+background:#f8fbff;
 }
