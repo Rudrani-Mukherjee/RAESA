@@ -518,6 +518,27 @@ table.data-table { width: 100%; border-collapse: collapse; background: var(--pap
 }
 .person-card-blank h4, .person-card-blank span { color: var(--muted); font-style: italic; }
 
+/* Plain two-column name list — no cards, no borders, just names and
+   designations (used on the Review Committee page). */
+.plain-name-list {
+  list-style: none; margin: 0; padding: 0;
+  columns: 2; column-gap: 56px;
+}
+.plain-name-list li {
+  break-inside: avoid; margin-bottom: 22px; padding-bottom: 22px;
+  border-bottom: 1px solid var(--line);
+}
+.plain-name-list li:last-child { border-bottom: none; }
+.plain-name-list strong {
+  display: block; font-family: var(--font-display); font-weight: 700;
+  color: var(--ink); font-size: 1.15rem; margin-bottom: 4px;
+}
+.plain-name-list span { display: block; color: var(--muted); font-size: 0.95rem; }
+
+@media (max-width: 700px) {
+  .plain-name-list { columns: 1; }
+}
+
 .subcommittee { margin-bottom: 24px; }
 .subcommittee:last-child { margin-bottom: 0; }
 .subgroup-label {
