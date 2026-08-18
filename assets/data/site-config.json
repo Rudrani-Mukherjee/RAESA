@@ -18,7 +18,7 @@
       "children": [
         { "label": "Organizing Committee", "href": "committee/organizing.html" },
         { "label": "Advisory Committee", "href": "committee/advisory.html" },
-        { "label": "Technical Program Committee", "href": "committee/technical.html" }
+        { "label": "Review Committee", "href": "committee/review.html" }
       ]
     },
     { "label": "Speakers", "href": "speakers.html" },
@@ -59,7 +59,7 @@
     { "title": "Best paper recognition", "text": "Outstanding contributions are celebrated with track-wise awards and visibility." }
   ],
 
-  "footerQuickLinks": ["cfp.html", "committee/technical.html", "submission.html", "registration.html", "venue.html"],
+  "footerQuickLinks": ["cfp.html", "committee/organizing.html", "submission.html", "registration.html", "venue.html"],
 
   "socials": [
     { "label": "LinkedIn", "href": "#" },

@@ -22,7 +22,10 @@
 }
 
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+/* overflow-x lives on html, not body — setting it on body forces overflow-y
+   to compute as "auto", turning body into its own scroll container and
+   breaking position:sticky for the header. */
+html { scroll-behavior: smooth; overflow-x: hidden; }
 body {
   margin: 0;
   background: var(--bg);
@@ -31,7 +34,6 @@ body {
   line-height: 1.6;
   font-size: 1.08rem;
   -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
 }
 
 img { max-width: 100%; display: block; }
@@ -79,7 +81,7 @@ p { margin: 0 0 1em; color: var(--text); word-wrap: break-word; }
   background: rgba(255,255,255,0.95);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--line);
-  position: sticky; top: 0; z-index: 50;
+  position: fixed; top: 0; left: 0; right: 0; z-index: 50;
 }
 .header-inner {
   display: flex; align-items: center; gap: 20px; flex-wrap: wrap;
@@ -508,6 +510,68 @@ table.data-table { width: 100%; border-collapse: collapse; background: var(--pap
   font-family: var(--font-display); font-weight: 700; color: var(--ink-2);
 }
 
+/* Photo-block committee cards (Organizing & Advisory) — image on top,
+   name and designation below. Drop a matching file into
+   assets/images/committee/ and the placeholder is replaced automatically. */
+.person-card.has-photo { display: flex; flex-direction: column; gap: 2px; text-align: center; align-items: stretch; }
+.person-photo {
+  position: relative; width: 100%; aspect-ratio: 1; margin-bottom: 10px;
+  border-radius: var(--radius); background: var(--bg); border: 1px dashed var(--line);
+  overflow: hidden;
+}
+.person-photo::after {
+  content: "Photo"; position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+  color: var(--muted); font-family: var(--font-mono); font-size: 0.78rem; letter-spacing: 0.06em; text-transform: uppercase;
+}
+.person-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1; }
+.person-card.has-photo .role-tag { align-self: center; }
+
+/* Blank member boxes (Technical Program Committee) — dashed cards ready
+   for names and designations to be typed in later. */
+.person-card-blank {
+  text-align: center; background: var(--bg);
+  border: 1px dashed var(--line); border-top: 1px dashed var(--line);
+}
+.person-card-blank h4, .person-card-blank span { color: var(--muted); font-style: italic; }
+
+/* Plain name/designation cards — no photo, no avatar — used for the
+   patrons/chairs/sub-committee breakdown on the Organizing Committee page. */
+.subcommittee { margin-bottom: 24px; }
+.subcommittee:last-child { margin-bottom: 0; }
+.subgroup-label {
+  font-family: var(--font-mono); font-size: 1.7rem; font-weight: 700;
+  letter-spacing: 0.05em; text-transform: uppercase; color: var(--gold);
+  margin: 0 0 18px;
+}
+.person-card-plain { text-align: center; }
+.person-card-plain h4 { margin-bottom: 4px; }
+.person-card-plain span { color: var(--muted); font-size: 0.9rem; }
+.person-solo { display: flex; justify-content: center; }
+
+/* Main committee-group headers (Leadership, Organizing Committee, ...) —
+   larger than the default site h2. */
+.committee-group .group-head h2 { font-size: clamp(2.2rem, 4.5vw, 3.2rem); }
+
+/* Patrons cards — no photo, no gold top border, larger text and block. */
+.person-card-patron {
+  display: flex; flex-direction: column; text-align: center;
+  border-top: none; padding: 32px 26px;
+}
+.person-card-patron h4 { font-size: 1.5rem; margin-bottom: 8px; }
+.person-card-patron span { font-size: 1.1rem; color: var(--muted); }
+.grid-committee > .card.person-card-patron { flex: 0 0 360px; }
+
+/* Fixed standard card size for the organizing-committee breakdown — every
+   block (patrons, chairs, sub-committee members) stays exactly the same
+   size instead of stretching to fill its row, matching the Technical
+   Program Committee block size. */
+.grid-committee {
+  display: flex; flex-wrap: wrap; justify-content: center;
+  gap: 32px;
+}
+.grid-committee > .card { flex: 0 0 280px; }
+.person-solo > .card { width: 280px; }
+
 .day-head { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; margin: 0 0 14px; }
 .day-head .day-date { font-family: var(--font-mono); color: var(--muted); }
 .data-table td { vertical-align: top; }
@@ -521,6 +585,25 @@ table.data-table { width: 100%; border-collapse: collapse; background: var(--pap
   background: var(--bg); border: 1px solid var(--line); border-radius: 999px;
   padding: 4px 12px; margin: 4px 8px 0 0;
 }
+
+/* ============================================================
+   Program schedule — larger type across the page (scoped so the
+   shared .data-table/.track-pill/.card components used elsewhere
+   on the site are unaffected).
+   ============================================================ */
+.program-page .page-title-bar p { font-size: 1.2rem; }
+.program-page .breadcrumb { font-size: 0.95rem; }
+.program-page .day-head h2 { font-size: clamp(2rem, 4vw, 2.9rem); }
+.program-page .day-head .day-date { font-size: 1.15rem; }
+.program-page .data-table th,
+.program-page .data-table td { font-size: 1.15rem; padding: 14px 22px; }
+.program-page .data-table .session-title { font-size: 1.25rem; }
+.program-page .data-table ul { font-size: 1.08rem; }
+.program-page .track-pill { font-size: 1.05rem; padding: 6px 14px; }
+.program-page .section-head h2 { font-size: clamp(2rem, 4vw, 2.9rem); }
+.program-page .section-head .eyebrow { font-size: 0.92rem; }
+.program-page .card h3 { font-size: 1.6rem; }
+.program-page .card p { font-size: 1.15rem; }
 
 /* ============================================================
    Nav strip spans the full screen width like the logo banner
