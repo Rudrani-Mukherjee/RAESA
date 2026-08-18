@@ -100,6 +100,27 @@
     </header>`;
 
     wireHeaderInteractions();
+    syncHeaderOffset();
+  }
+
+  // The header is position:fixed so it stays visible while scrolling
+  // (like the CIACON site). Push the page content down by the header's
+  // real height so nothing sits underneath it. A ResizeObserver keeps this
+  // in sync whenever the header's own height changes for any reason —
+  // breakpoint changes, logo/font loading, orientation change — which is
+  // more reliable than listening for the window "resize" event alone.
+  let headerResizeObserver;
+  function syncHeaderOffset() {
+    const header = document.querySelector(".site-header");
+    if (!header) return;
+    document.body.style.paddingTop = header.offsetHeight + "px";
+
+    if (!headerResizeObserver && "ResizeObserver" in window) {
+      headerResizeObserver = new ResizeObserver(() => {
+        document.body.style.paddingTop = header.offsetHeight + "px";
+      });
+      headerResizeObserver.observe(header);
+    }
   }
 
   function resolveAssetUrl(src) {
@@ -335,6 +356,9 @@
     renderCmtLinks(cfg);
     renderSimpleFields(cfg);
     initReveal();
+
+    window.addEventListener("resize", syncHeaderOffset);
+    window.addEventListener("load", syncHeaderOffset);
   }
 
   document.addEventListener("DOMContentLoaded", init);
