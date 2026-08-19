@@ -103,24 +103,8 @@
     syncHeaderOffset();
   }
 
-  // The header is position:fixed so it stays visible while scrolling
-  // (like the CIACON site). Push the page content down by the header's
-  // real height so nothing sits underneath it. A ResizeObserver keeps this
-  // in sync whenever the header's own height changes for any reason —
-  // breakpoint changes, logo/font loading, orientation change — which is
-  // more reliable than listening for the window "resize" event alone.
-  let headerResizeObserver;
   function syncHeaderOffset() {
-    const header = document.querySelector(".site-header");
-    if (!header) return;
-    document.body.style.paddingTop = header.offsetHeight + "px";
-
-    if (!headerResizeObserver && "ResizeObserver" in window) {
-      headerResizeObserver = new ResizeObserver(() => {
-        document.body.style.paddingTop = header.offsetHeight + "px";
-      });
-      headerResizeObserver.observe(header);
-    }
+    document.body.style.removeProperty("padding-top");
   }
 
   function resolveAssetUrl(src) {
@@ -219,6 +203,33 @@
         document.querySelectorAll(".has-children.open").forEach((li) => li.classList.remove("open"));
       }
     });
+  }
+
+  function initScrollNav() {
+    const sourceNav = document.querySelector(".site-nav");
+    const header = document.querySelector(".site-header");
+    if (!sourceNav || !header || document.querySelector(".scroll-nav")) return;
+
+    const scrollNav = document.createElement("div");
+    scrollNav.className = "scroll-nav";
+    scrollNav.setAttribute("aria-label", "Compact navigation");
+    scrollNav.innerHTML = '<div class="container"><nav class="site-nav"></nav></div>';
+    scrollNav.querySelector(".site-nav").innerHTML = sourceNav.innerHTML;
+    document.body.appendChild(scrollNav);
+
+    scrollNav.querySelectorAll(".nav-toggle").forEach((button) => {
+      button.addEventListener("click", () => {
+        const item = button.closest(".has-children");
+        const open = item.classList.toggle("open");
+        button.setAttribute("aria-expanded", String(open));
+      });
+    });
+
+    const updateVisibility = () => {
+      scrollNav.classList.toggle("visible", header.getBoundingClientRect().bottom <= 0);
+    };
+    window.addEventListener("scroll", updateVisibility, { passive: true });
+    updateVisibility();
   }
 
   function renderFooter(cfg) {
@@ -339,6 +350,10 @@
   }
 
   async function init() {
+    wireHeaderInteractions();
+    syncHeaderOffset();
+    initScrollNav();
+
     let cfg;
     try {
       const res = await fetch(CONFIG_PATH, { cache: "no-store" });
@@ -347,7 +362,6 @@
       console.error("Could not load site-config.json — check that the site is served over http(s), not opened as a local file.", err);
       return;
     }
-    renderHeader(cfg);
     renderFooter(cfg);
     renderDatesTable(cfg);
     renderHeroSlides(cfg);
