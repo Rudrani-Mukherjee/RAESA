@@ -564,6 +564,12 @@ table.data-table { width: 100%; border-collapse: collapse; background: var(--pap
   .plain-name-list { columns: 1; }
 }
 
+/* Plain contact-info blocks (address, contact person, working hours) —
+   no card/box, just spaced-out text like a simple letterhead. */
+.contact-details { max-width: 620px; }
+.contact-details p { font-size: 1.08rem; line-height: 1.8; margin-bottom: 1.8em; }
+.contact-details p:last-child { margin-bottom: 0; }
+
 .subcommittee { margin-bottom: 24px; }
 .subcommittee:last-child { margin-bottom: 0; }
 .subgroup-label {
