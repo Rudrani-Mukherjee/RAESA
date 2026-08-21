@@ -465,6 +465,8 @@ table.data-table { width: 100%; border-collapse: collapse; background: var(--pap
 }
 
 @media (max-width: 900px) {
+  .contact-layout { grid-template-columns: 1fr; gap: 24px; }
+  .contact-image-wrap { justify-self: center; width: min(100%, 300px); }
   .header-logo-left { height: 72px; }
   .header-logo-right { height: 72px; width: 72px; }
   .brand-text strong { font-size: 2.1rem; }
@@ -566,7 +568,21 @@ table.data-table { width: 100%; border-collapse: collapse; background: var(--pap
 
 /* Plain contact-info blocks (address, contact person, working hours) —
    no card/box, just spaced-out text like a simple letterhead. */
-.contact-details { max-width: 620px; }
+.contact-layout {
+  display: grid;
+  grid-template-columns: 300px minmax(320px, 620px);
+  gap: 24px;
+  align-items: center;
+  width: min(100%, 944px);
+  margin-inline: auto;
+  justify-content: center;
+}
+.contact-image-wrap {
+  width: min(100%, 300px);
+  justify-self: end;
+}
+.contact-image { display: block; width: 100%; height: auto; object-fit: contain; }
+.contact-details { width: 100%; max-width: 620px; }
 .contact-details p { font-size: 1.08rem; line-height: 1.8; margin-bottom: 1.8em; }
 .contact-details p:last-child { margin-bottom: 0; }
 

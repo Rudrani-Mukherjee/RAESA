@@ -1,6 +1,6 @@
 {
   "siteName": "RAESA 2027",
-  "bcrecLogo": "assets/images/logo/bc roy logo.jpg",
+  "bcrecLogo": "assets/images/logo/bc roy logo.jpeg",
   "fullName": "International Conference on Recent Advances in Engineering Sciences and Applications",
   "tagline": "Fostering interdisciplinary research across engineering, science, and humanities",
   "venueShort": "Dr. B. C. Roy Engineering College, Durgapur, India",
@@ -76,7 +76,7 @@
   ],
   "heroSlides": [
     "assets/images/venue/bcrec.jpg",
-    "assets/images/venue/bcrec-1.jpg",
+    "assets/images/venue/bcrec-1.jpeg",
     "assets/images/venue/bcrec-2.jpg",
     "assets/images/venue/bcrec-3.jpg"
   ]

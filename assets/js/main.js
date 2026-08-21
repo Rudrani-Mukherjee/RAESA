@@ -9,6 +9,7 @@
   const DEPTH = (document.body.dataset.depth || "0") | 0;
   const ROOT = "../".repeat(DEPTH);
   const CONFIG_PATH = ROOT + "assets/data/site-config.json";
+  const DEFAULT_BCREC_LOGO = "assets/images/logo/bc roy logo.jpeg";
 
   function fmtDate(iso) {
     const d = new Date(iso + "T00:00:00");
@@ -101,6 +102,12 @@
 
     wireHeaderInteractions();
     syncHeaderOffset();
+  }
+
+  function updateBcrecLogos(cfg) {
+    document.querySelectorAll(".header-logo-left").forEach((logo) => {
+      logo.src = ROOT + cfg.bcrecLogo;
+    });
   }
 
   function syncHeaderOffset() {
@@ -360,9 +367,11 @@
       cfg = await res.json();
     } catch (err) {
       console.error("Could not load site-config.json — check that the site is served over http(s), not opened as a local file.", err);
+      updateBcrecLogos({ bcrecLogo: DEFAULT_BCREC_LOGO });
       return;
     }
     renderFooter(cfg);
+    updateBcrecLogos(cfg);
     renderDatesTable(cfg);
     renderHeroSlides(cfg);
     renderHeroHighlights(cfg);
