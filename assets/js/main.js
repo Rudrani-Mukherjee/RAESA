@@ -63,7 +63,7 @@
             </ul>
           </li>`;
         }
-        return `<li class="nav-item"><a class="nav-link${active}" href="${ROOT}${item.href}">${item.label}</a></li>`;
+        return `<li class="nav-item"><a class="nav-link${active}" href="${item.external ? item.href : ROOT + item.href}"${item.external ? ' target="_blank" rel="noopener"' : ""}>${item.label}</a></li>`;
       })
       .join("");
   }
@@ -246,6 +246,12 @@
       .flatMap((i) => (i.children ? i.children : [i]))
       .filter((i) => cfg.footerQuickLinks.includes(i.href));
 
+    const currentYear = new Date().getFullYear();
+    const footerYear = currentYear === 2026
+      ? "2026"
+      : `${currentYear - 1}-${String(currentYear).slice(-2)}`;
+    const phoneText = (cfg.phone || "").split(",").map((p) => p.trim()).filter(Boolean).join(", ");
+
     mount.innerHTML = `
       <footer class="site-footer">
         <div class="container footer-grid">
@@ -255,19 +261,22 @@
           </div>
           <div>
             <h4>Quick Links</h4>
-            <ul>${quickLinks.map((l) => `<li><a href="${ROOT}${l.href}">${l.label}</a></li>`).join("")}</ul>
+            <ul>
+              ${quickLinks.map((l) => `<li><a href="${ROOT}${l.href}">${l.label}</a></li>`).join("")}
+              <li><a href="${cfg.cmtLink}" target="_blank" rel="noopener">CMT Submission</a></li>
+            </ul>
           </div>
           <div>
             <h4>Contact</h4>
             <p>Email: <a href="mailto:${cfg.email}">${cfg.email}</a></p>
-            <p>Phone: ${cfg.phone}</p>
+            <p>Phone: ${phoneText}</p>
           </div>
         </div>
         <div class="container footer-bottom">
-          <span>&copy; <span id="year"></span> ${cfg.siteName}. All rights reserved.</span>
+          <span>Copyright © ${cfg.siteName} <span id="year"></span>. All Rights Reserved.</span>
         </div>
       </footer>`;
-    document.getElementById("year").textContent = new Date().getFullYear();
+    document.getElementById("year").textContent = footerYear;
   }
 
   function renderDatesTable(cfg) {
@@ -370,6 +379,7 @@
       updateBcrecLogos({ bcrecLogo: DEFAULT_BCREC_LOGO });
       return;
     }
+    renderHeader(cfg);
     renderFooter(cfg);
     updateBcrecLogos(cfg);
     renderDatesTable(cfg);
