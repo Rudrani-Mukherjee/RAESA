@@ -763,3 +763,21 @@ margin-bottom:25px;
 .alt-bg{
 background:#f8fbff;
 }
+
+.nav-link.active, .nav-link:active, .nav-link:focus-visible {
+  background: var(--gold); color: var(--ink-2); border-radius: 0;
+}
+
+.nav-link.nav-brochure {
+  color: #ffe600;
+  font-weight: 700;
+  animation: brochure-blink 1.2s ease-in-out infinite;
+}
+.nav-link.nav-brochure:hover {
+  color: #ffe600;
+  background: rgba(255, 230, 0, 0.15);
+}
+@keyframes brochure-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.35; }
+}

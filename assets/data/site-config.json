@@ -12,7 +12,6 @@
 
   "nav": [
     { "label": "Home", "href": "index.html" },
-    { "label": "Brochure", "href": "assets/docs/Brochure.pdf", "external": true },
     { "label": "Call for Papers", "href": "cfp.html" },
     {
       "label": "Committee",
@@ -36,7 +35,8 @@
         { "label": "CIACON 2025", "href": "https://ieeexplore.ieee.org/xpl/conhome/11189301/proceeding", "external": true }
       ]
     },
-    { "label": "Contact", "href": "contact.html" }
+    { "label": "Contact", "href": "contact.html" },
+    { "label": "Brochure", "href": "assets\\docs\\Brochure.pdf", "external": true }
   ],
 
   "importantDates": [
