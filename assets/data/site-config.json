@@ -1,17 +1,18 @@
 {
-  "siteName": "RAESA 2027",
+  "siteName": "RAESA",
   "bcrecLogo": "assets/images/logo/bc roy logo.jpeg",
   "fullName": "International Conference on Recent Advances in Engineering Sciences and Applications",
   "tagline": "Fostering interdisciplinary research across engineering, science, and humanities",
   "venueShort": "Dr. B. C. Roy Engineering College, Durgapur, India",
   "conferenceDates": "25–26 March 2027",
-  "email": "raesa2027@bcrec.ac.in",
-  "phone": "+91-90000-00000",
+  "email": "raesa@bcrec.ac.in",
+  "phone": "+91-6297128554, +91-8016171274",
   "cmtLink": "https://cmt3.research.microsoft.com/RAESA2027",
   "heroSummary": "A two-day academic gathering that connects students, faculty, and industry professionals through research, innovation, and meaningful networking.",
 
   "nav": [
     { "label": "Home", "href": "index.html" },
+    { "label": "Brochure", "href": "assets/docs/Brochure.pdf", "external": true },
     { "label": "Call for Papers", "href": "cfp.html" },
     {
       "label": "Committee",
@@ -39,10 +40,10 @@
   ],
 
   "importantDates": [
-    { "label": "Call for Papers opens", "date": "2026-10-01", "done": false },
-    { "label": "Full paper submission deadline", "date": "2027-01-15", "done": false },
-    { "label": "Notification of acceptance", "date": "2027-02-10", "done": false },
-    { "label": "Registration deadline", "date": "2027-02-25", "done": false },
+    { "label": "Call for Papers opens", "date": "2026-11-15", "done": false },
+    { "label": "Full paper submission deadline", "date": "2027-01-25", "done": false },
+    { "label": "Notification of acceptance", "date": "2027-02-25", "done": false },
+    { "label": "Registration deadline", "date": "2027-03-01", "done": false },
     { "label": "Camera-ready submission", "date": null, "done": false },
     { "label": "Conference dates", "date": "2027-03-25", "endDate": "2027-03-26", "done": false }
   ],
