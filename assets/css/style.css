@@ -468,8 +468,6 @@ table.data-table { width: 100%; border-collapse: collapse; background: var(--pap
 }
 
 @media (max-width: 900px) {
-  .contact-layout { grid-template-columns: 1fr; gap: 24px; }
-  .contact-image-wrap { justify-self: center; width: min(100%, 300px); }
   .header-logo-left { height: 72px; }
   .header-logo-right { height: 72px; width: 72px; }
   .brand-text strong { font-size: 2.1rem; }
@@ -588,6 +586,15 @@ table.data-table { width: 100%; border-collapse: collapse; background: var(--pap
 .contact-details { width: 100%; max-width: 620px; }
 .contact-details p { font-size: 1.08rem; line-height: 1.8; margin-bottom: 1.8em; }
 .contact-details p:last-child { margin-bottom: 0; }
+
+/* Stack the contact image above the details on narrow screens — placed
+   after the base .contact-layout rule so it actually wins in the cascade
+   (an earlier media rule with the same specificity was being overridden
+   by the base rule further down the file). */
+@media (max-width: 900px) {
+  .contact-layout { grid-template-columns: 1fr; gap: 24px; justify-content: stretch; }
+  .contact-image-wrap { justify-self: center; width: min(100%, 300px); }
+}
 
 .subcommittee { margin-bottom: 24px; }
 .subcommittee:last-child { margin-bottom: 0; }
