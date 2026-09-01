@@ -274,12 +274,30 @@ p { margin: 0 0 1em; color: var(--text); word-wrap: break-word; }
 .hero-subtext { color: #d6e1ee; max-width: 58ch; margin-top: 0.3rem; }
 .hero-actions { display: flex; gap: 12px; margin-top: 22px; flex-wrap: wrap; }
 
+.registration-actions {
+  display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; margin: 1.5rem 0;
+}
+
 .btn {
   display: inline-block; padding: 12px 22px; border-radius: 999px;
   font-weight: 600; font-size: 0.92rem; border: 1px solid transparent; cursor: pointer;
   transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
 }
 .btn:hover { transform: translateY(-2px); }
+
+.btn.registration-form-btn {
+  background: rgba(255,255,255,0.9);
+  border: 1.5px solid rgba(90, 140, 105, 0.9);
+  color: #1f3d30;
+  box-shadow: 0 8px 16px rgba(110, 164, 125, 0.12);
+}
+
+.btn.registration-form-btn:hover {
+  background: #e8e9e8;
+  border-color: rgba(72, 118, 87, 1);
+  color: #1f3d30;
+  box-shadow: 0 10px 18px rgba(72, 118, 87, 0.16);
+}
 .btn-primary { background: var(--gold); color: var(--ink); box-shadow: 0 12px 24px rgba(201,162,39,0.2); }
 .btn-primary:hover { background: #f0b94a; color: var(--ink); }
 .btn-outline { border-color: rgba(255,255,255,0.4); color: #f8f5dd; }
