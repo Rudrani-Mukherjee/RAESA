@@ -201,6 +201,14 @@
       btn.addEventListener("click", () => {
         const li = btn.closest(".has-children");
         const isOpen = li.classList.toggle("open");
+        if (isOpen) {
+          li.parentElement.querySelectorAll(":scope > .has-children.open").forEach((other) => {
+            if (other !== li) {
+              other.classList.remove("open");
+              other.querySelector(".nav-toggle")?.setAttribute("aria-expanded", "false");
+            }
+          });
+        }
         btn.setAttribute("aria-expanded", String(isOpen));
       });
     });
@@ -228,6 +236,14 @@
       button.addEventListener("click", () => {
         const item = button.closest(".has-children");
         const open = item.classList.toggle("open");
+        if (open) {
+          item.parentElement.querySelectorAll(":scope > .has-children.open").forEach((other) => {
+            if (other !== item) {
+              other.classList.remove("open");
+              other.querySelector(".nav-toggle")?.setAttribute("aria-expanded", "false");
+            }
+          });
+        }
         button.setAttribute("aria-expanded", String(open));
       });
     });
