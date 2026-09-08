@@ -169,6 +169,7 @@ p { margin: 0 0 1em; color: var(--text); word-wrap: break-word; }
   .scroll-nav .nav-link { padding: 8px 11px; font-size: 0.76rem; }
 }
 
+
 /* Slideshow with arrow controls (full-bleed) */
 .hero-slideshow {
   position: relative;
