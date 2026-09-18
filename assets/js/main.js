@@ -220,9 +220,38 @@
     const scrollNav = document.createElement("div");
     scrollNav.className = "scroll-nav";
     scrollNav.setAttribute("aria-label", "Compact navigation");
-    scrollNav.innerHTML = '<div class="container"><nav class="site-nav"></nav></div>';
-    scrollNav.querySelector(".site-nav").innerHTML = sourceNav.innerHTML;
+    scrollNav.setAttribute("aria-expanded", "false");
+    scrollNav.innerHTML = `
+      <div class="container">
+        <button class="menu-toggle scroll-menu-toggle" aria-label="Toggle navigation" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+        <nav class="site-nav">
+          ${sourceNav.innerHTML}
+        </nav>
+      </div>`;
     document.body.appendChild(scrollNav);
+
+    const compactToggle = scrollNav.querySelector(".scroll-menu-toggle");
+    const compactNav = scrollNav.querySelector(".site-nav");
+
+    const applyCompactNavState = (isOpen) => {
+      scrollNav.classList.toggle("open", isOpen);
+      compactToggle.setAttribute("aria-expanded", String(isOpen));
+      scrollNav.setAttribute("aria-expanded", String(isOpen));
+      compactNav.style.maxHeight = isOpen ? "min(70vh, 460px)" : "0px";
+      compactNav.style.opacity = isOpen ? "1" : "0";
+      compactNav.style.visibility = isOpen ? "visible" : "hidden";
+      compactNav.style.pointerEvents = isOpen ? "auto" : "none";
+      compactNav.style.transform = isOpen ? "translateY(0)" : "translateY(-14px)";
+    };
+
+    compactToggle?.addEventListener("click", (event) => {
+      event.preventDefault();
+      event.stopPropagation();
+      const nextState = !(compactToggle.getAttribute("aria-expanded") === "true");
+      applyCompactNavState(nextState);
+    });
 
     scrollNav.querySelectorAll(".nav-toggle").forEach((button) => {
       button.addEventListener("click", () => {
@@ -233,7 +262,18 @@
     });
 
     const updateVisibility = () => {
-      scrollNav.classList.toggle("visible", header.getBoundingClientRect().bottom <= 0);
+      const shouldShow = window.scrollY > 20;
+      scrollNav.classList.toggle("visible", shouldShow);
+      if (!shouldShow) {
+        scrollNav.classList.remove("open");
+        compactToggle?.setAttribute("aria-expanded", "false");
+        scrollNav.setAttribute("aria-expanded", "false");
+        compactNav.style.maxHeight = "0px";
+        compactNav.style.opacity = "0";
+        compactNav.style.visibility = "hidden";
+        compactNav.style.pointerEvents = "none";
+        compactNav.style.transform = "translateY(-14px)";
+      }
     };
     window.addEventListener("scroll", updateVisibility, { passive: true });
     updateVisibility();
