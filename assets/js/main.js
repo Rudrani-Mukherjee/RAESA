@@ -228,9 +228,31 @@
     const scrollNav = document.createElement("div");
     scrollNav.className = "scroll-nav";
     scrollNav.setAttribute("aria-label", "Compact navigation");
-    scrollNav.innerHTML = '<div class="container"><nav class="site-nav"></nav></div>';
-    scrollNav.querySelector(".site-nav").innerHTML = sourceNav.innerHTML;
+    scrollNav.setAttribute("aria-expanded", "false");
+    scrollNav.innerHTML = `
+      <div class="container">
+        <button class="menu-toggle scroll-menu-toggle" aria-label="Toggle navigation" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+        <nav class="site-nav">
+          ${sourceNav.innerHTML}
+        </nav>
+      </div>`;
     document.body.appendChild(scrollNav);
+
+    const compactToggle = scrollNav.querySelector(".scroll-menu-toggle");
+
+    const setCompactNavOpen = (isOpen) => {
+      scrollNav.classList.toggle("open", isOpen);
+      compactToggle.setAttribute("aria-expanded", String(isOpen));
+      scrollNav.setAttribute("aria-expanded", String(isOpen));
+    };
+
+    compactToggle?.addEventListener("click", (event) => {
+      event.preventDefault();
+      event.stopPropagation();
+      setCompactNavOpen(!scrollNav.classList.contains("open"));
+    });
 
     scrollNav.querySelectorAll(".nav-toggle").forEach((button) => {
       button.addEventListener("click", () => {
@@ -249,7 +271,14 @@
     });
 
     const updateVisibility = () => {
-      scrollNav.classList.toggle("visible", header.getBoundingClientRect().bottom <= 0);
+      const shouldShow = window.scrollY > 20;
+      scrollNav.classList.toggle("visible", shouldShow);
+      if (!shouldShow) {
+        scrollNav.classList.remove("open");
+        compactToggle?.setAttribute("aria-expanded", "false");
+        scrollNav.setAttribute("aria-expanded", "false");
+        setCompactNavOpen(false);
+      }
     };
     window.addEventListener("scroll", updateVisibility, { passive: true });
     updateVisibility();
