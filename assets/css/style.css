@@ -326,18 +326,25 @@ p { margin: 0 0 1em; color: var(--text); word-wrap: break-word; }
 
 .hero-panel { position: relative; z-index: 1; }
 .ledger-card {
-  background: rgba(255,255,255,0.97); border: 1px solid rgba(255,255,255,0.16);
-  border-radius: var(--radius); padding: 20px; color: var(--text); box-shadow: 0 20px 45px rgba(0,0,0,0.16);
+  background: #fffdf4; border: 2px solid var(--gold); border-top: 6px solid var(--gold);
+  border-radius: var(--radius); padding: 24px; color: var(--text); box-shadow: 0 20px 45px rgba(0,0,0,0.18);
 }
-.ledger-card h3 { color: var(--ink); }
+.ledger-card h3 {
+  color: var(--ink); font-size: clamp(1.6rem, 2vw, 2rem); margin-bottom: 14px;
+  padding-bottom: 12px; border-bottom: 2px solid rgba(224,165,44,0.35);
+}
 .dates-ledger { list-style: none; margin: 0; padding: 0; }
 .dates-ledger li {
-  display: grid; grid-template-columns: 28px 1fr auto; gap: 12px; align-items: center;
-  padding: 10px 0; border-bottom: 1px dashed var(--line); font-size: 0.92rem;
+  display: grid; grid-template-columns: 32px 1fr auto; gap: 14px; align-items: center;
+  padding: 14px 0; border-bottom: 1px dashed #c9b77c; font-size: 1.08rem;
 }
 .dates-ledger li:last-child { border-bottom: none; }
-.ledger-index { font-family: var(--font-mono); color: var(--muted); font-size: 0.8rem; }
-.ledger-date { font-family: var(--font-mono); font-weight: 600; color: var(--ink-2); white-space: nowrap; }
+.ledger-index { font-family: var(--font-mono); color: var(--teal); font-size: 0.9rem; font-weight: 700; }
+.ledger-label { color: var(--ink); font-size: 1.05rem; font-weight: 700; line-height: 1.35; }
+.ledger-date {
+  font-family: var(--font-mono); font-size: 1.08rem; font-weight: 700; color: var(--ink);
+  white-space: nowrap; background: var(--gold); border-radius: 6px; padding: 6px 9px;
+}
 .dates-ledger li.is-done { opacity: 0.55; }
 .dates-ledger li.is-done .ledger-date::after { content: " ✓"; color: var(--teal); }
 
@@ -454,6 +461,12 @@ table.data-table { width: 100%; border-collapse: collapse; background: var(--pap
 }
 
 .ledger-date.tba { color: var(--muted); font-style: italic; font-weight: 500; }
+
+@media (max-width: 600px) {
+  .ledger-card { padding: 18px; }
+  .dates-ledger li { grid-template-columns: 28px 1fr; gap: 10px; padding: 13px 0; }
+  .ledger-date { grid-column: 2; justify-self: start; font-size: 1rem; }
+}
 
 @media (max-width: 1024px) {
   .hero-inner { grid-template-columns: 1fr; gap: 20px; }
