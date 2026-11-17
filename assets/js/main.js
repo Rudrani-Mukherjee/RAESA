@@ -333,7 +333,7 @@
               (d, i) => `
             <li class="${d.done ? "is-done" : ""}">
               <span class="ledger-index">${String(i + 1).padStart(2, "0")}</span>
-              <span class="ledger-label">${d.label}</span>
+              <span class="ledger-label">${d.label.replace(" (for attendees)", ' <span class="ledger-qualifier">(for attendees)</span>')}</span>
               <span class="ledger-date${d.date ? "" : " tba"}">${d.date ? formatDateEntry(d) : "To be announced"}</span>
             </li>`
             )
