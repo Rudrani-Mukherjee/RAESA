@@ -40,18 +40,18 @@
   ],
 
   "importantDates": [
-    { "label": "Call for Papers opens", "date": "2026-11-15", "done": false },
-    { "label": "Full paper submission deadline", "date": "2027-01-25", "done": false },
-    { "label": "Notification of acceptance", "date": "2027-02-25", "done": false },
-    { "label": "Registration deadline", "date": "2027-03-01", "done": false },
-    { "label": "Camera-ready submission", "date": null, "done": false },
+    { "label": "Call for Papers & Registration opens", "date": "2026-12-05", "done": false },
+    { "label": "Full paper submission deadline", "date": "2027-01-10", "done": false },
+    { "label": "Notice of acceptance", "date": "2027-02-01", "done": false },
+    { "label": "Final paper submission deadline", "date": "2027-02-15", "done": false },
+    { "label": "Registration deadline (for attendees)", "date": "2027-02-22", "done": false },
     { "label": "Conference dates", "date": "2027-03-25", "endDate": "2027-03-26", "done": false }
   ],
 
   "highlights": [
     { "value": "5", "label": "Disciplines", "caption": "Across engineering, sciences, and emerging technologies." },
     { "value": "2", "label": "Days", "caption": "Of talks, panels, networking, and live discussion." },
-    { "value": "Oct 2026", "label": "Call for Papers", "caption": "Submissions open October 2026 — track details coming soon." }
+    { "value": "5 Dec 2026", "label": "Call for Papers & Registration", "caption": "Paper submissions and registration open." }
   ],
 
   "conferenceTracks": [
