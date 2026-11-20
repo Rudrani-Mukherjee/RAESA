@@ -62,6 +62,17 @@
 }
 
 .table-wrap { overflow-x: auto; }
+.registration-content { max-width: 900px; margin: 0 auto; }
+.registration-content h2 { margin: 0 0 12px; text-align: center; font-size: 1.6rem; }
+.registration-content p { font-size: 1.1rem; text-align: center; }
+.registration-dates { max-width: 680px; margin: 0 auto 24px; padding: 12px 18px; }
+.registration-date-list { display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 4px 20px; }
+.registration-date { margin: 0; padding: 4px 8px; font-size: 1rem; text-align: center; }
+.registration-date time { margin-left: 4px; color: var(--ink); font-size: 1.1rem; font-weight: 700; white-space: nowrap; }
+.registration-process { text-align: center; }
+.registration-process .data-table th,
+.registration-process .data-table td { padding: 12px 16px; font-size: 1.05rem; }
+.registration-process .btn { font-size: 1.05rem; }
 </style>
 </head>
 <body data-depth="0">
@@ -74,36 +85,44 @@
   <div class="container">
     <span class="breadcrumb"><a href="index.html">Home</a> / Registration</span>
     <h1>Registration</h1>
-    <p class="lead">All participants are required to complete the registration process to attend and present at RAESA 2027. Please find the applicable registration fee structure categorized by participant affiliation below:</p>
   </div>
 </section>
 
 <section class="section">
   <div class="container">
-    <div class="card" style="padding: 2rem; max-width: 900px; margin: 0 auto;">
-      <h2 style="margin-top:0; text-align:center;">Registration Process</h2>
-      <p style="text-align:center; margin-bottom: 1.5rem;">All participants are required to complete the registration process to attend and present at RAESA 2027.</p>
-
-      <div class="registration-actions">
-        <a class="btn registration-form-btn" href="https://forms.gle/NRPCGZJRK7uG9rvF7" target="_blank" rel="noopener">Registration Form</a>
-        <a class="btn btn-primary" href="https://cmt3.research.microsoft.com/RAESA2027" data-widget="cmt-link" target="_blank" rel="noopener">Submit a Paper</a>
+    <div class="registration-content">
+      <div class="card registration-dates">
+        <h2>Registration Dates</h2>
+        <div class="registration-date-list">
+          <p class="registration-date">Registration starts: <time datetime="2026-12-05">5 December 2026</time></p>
+          <p class="registration-date">Last day to register: <time datetime="2027-02-22">22 February 2027</time></p>
+        </div>
       </div>
 
-      <div class="table-wrap" style="margin-top: 1.5rem;">
-        <table class="data-table">
-          <thead>
-            <tr><th>Category</th><th>Registration Fee</th></tr>
-          </thead>
-          <tbody>
-            <tr><td>Students (BCREC Only)</td><td>₹600</td></tr>
-            <tr><td>Research Scholars</td><td>₹900</td></tr>
-            <tr><td>Faculty &amp; Staff</td><td>₹1,200</td></tr>
-            <tr><td>Industry Personnel / Delegates</td><td>₹1,500</td></tr>
-          </tbody>
-        </table>
-      </div>
+      <div class="registration-process">
+        <p>All participants are required to complete the registration process to attend and present at RAESA 2027. At least one author of each accepted paper must register for inclusion in the proceedings.</p>
 
-      <p style="margin-top:16px;">Note: Registration fees are non-refundable. At least one author of each accepted paper must register for the conference to ensure inclusion in the proceedings. Detailed payment instructions and the registration portal link will be updated shortly.</p>
+        <div class="registration-actions">
+          <a class="btn registration-form-btn" href="https://forms.gle/NRPCGZJRK7uG9rvF7" target="_blank" rel="noopener">Registration Form</a>
+          <a class="btn btn-primary" href="https://cmt3.research.microsoft.com/RAESA2027" data-widget="cmt-link" target="_blank" rel="noopener">Submit a Paper</a>
+        </div>
+
+        <div class="table-wrap" style="margin-top: 1.5rem;">
+          <table class="data-table">
+            <thead>
+              <tr><th>Category</th><th>Registration Fee</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Students (BCREC Only)</td><td>₹600</td></tr>
+              <tr><td>Research Scholars</td><td>₹900</td></tr>
+              <tr><td>Faculty &amp; Staff</td><td>₹1,200</td></tr>
+              <tr><td>Industry Personnel / Delegates</td><td>₹1,500</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p style="margin-top:16px;">Registration fees are non-refundable. Detailed payment instructions and the registration portal link will be updated shortly.</p>
+      </div>
     </div>
   </div>
 </section>
